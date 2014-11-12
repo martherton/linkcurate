@@ -1,0 +1,60 @@
+
+	<div class="container">
+    <h1 class="home">
+      <%= link_to "Link Categories", root_path %>
+        
+    </h1>
+    <h2><% if params[:linkcat_id].present? %><% @linkcatnames.each do |linkcatname| %><%= linkcatname.linkcatname %><% end %><% else %><% end %></h2></div>
+
+<div class="search">
+      <% if current_user? %>
+        <% if params[:linkcat_id].present? %>
+         <h4><%= simple_form_for :search, url: root_path, method: :get do |f| %></h4>
+          <h4><%= f.input :q, placeholder: "search", label: '' %></h4>
+          <% end %>
+          <% else %>
+
+          <% end %>
+      <% else %>  
+        <h4>No Search available, please sign in</h4>
+       
+        
+        
+      <% end %> 
+      
+      <% if current_user? %>
+        <h4>User: <%= current_user.username %></h4>
+        
+        <h4><%= link_to "Log out", session_path, method: :delete %></h4>
+        <h4><%= link_to "My links", users_wlinks_path %></h4>
+        <% if current_user? %>
+        
+        <%= link_to "Add a category", new_linkcat_path %>
+        
+      <% else %>
+        
+      <% end %>
+        
+     
+      <% else %>
+        <h4><%= link_to "Sign up", new_users_path %></h4>
+        <h4><%= link_to "Log in", new_session_path %></h4>
+      <% end %>
+    </div>
+
+<% @linkcats.each do |linkcat| %>
+
+
+	<div class="linkcat">
+
+		<h2><%= link_to linkcat.linkcatname, linkcat_wlinks_path(linkcat.id) %></h2>
+
+		<h3><%= linkcat.descofcont %></h3>
+
+		
+
+	</div>
+
+
+	
+<% end %>

@@ -1,0 +1,10 @@
+<%= simple_form_for [@wlink,@comment] do |f| %>
+	
+	<%= f.input :body %>
+	<% @user = current_user %>
+	<div class = "hidlinkcat">
+	<%= f.input :user_id, input_html: { value: @user.id} %>
+	</div>
+	<%= f.button :submit %>
+
+<% end %>

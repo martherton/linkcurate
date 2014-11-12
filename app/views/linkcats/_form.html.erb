@@ -1,0 +1,12 @@
+<div class="newopen" >
+
+<%= simple_form_for @linkcat do |f| %>
+
+	<h4>Category</h4><%= f.input :linkcatname, label: false %>
+
+	<h4>Description</h4><%= f.input :descofcont, label: false %>
+
+	<%= f.button :submit, 'Add new category' %>
+
+<% end %>
+</div>

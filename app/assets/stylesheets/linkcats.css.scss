@@ -1,0 +1,49 @@
+// Place all the styles related to the linkcats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.newopen input[type="text"],
+.newopen input[type="password"],
+.newopen input[type="email"],
+.newopen input[type="url"]
+ {
+  width: 30em;
+  background-color: #345678;
+  color: #FFFFFF;
+  border: inset;
+}
+
+.newopen input[type="number"] {
+    width: 5em;
+  background-color: #345678;
+  color: #FFFFFF;
+  border: inset;
+}
+
+.newopen textarea {
+	width: 60em;
+	background-color: #345678;
+  color: #FFFFFF;
+  border: inset;
+  height: 10em;
+}
+
+.newopen h4 {
+  margin-bottom: 0.2em;
+
+}
+
+.newopen {
+  background-color: #C8C8C8;
+    font-size: .7em;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.5em;
+  margin-left: 15em;
+  margin-top: 2em;
+  
+}
+
+.newopen input[type="submit"] {
+   margin-left: 4em;
+   margin-top: 0.4em;
+}

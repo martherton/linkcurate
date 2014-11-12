@@ -1,0 +1,16 @@
+
+<div class="newopen">
+
+<%= simple_form_for [@user, @wlink], url: linkcat_wlinks_path, method: :post do |f| %>
+
+<h4>Name</h4><%= f.input :wlinkname, label: false %>
+	<h4>url</h4><%= f.input :urlwlink, label: false %>
+	<h4>Description</h4><%= f.input :descwlink, label: false %>
+	<div class="hidlinkcat" >
+	<%= f.input :linkcat_id, input_html: { value: params[:linkcat_id]} %>
+	</div>
+
+	<%= f.button :submit, 'Add new link' %>
+
+<% end %>
+</div>

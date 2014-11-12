@@ -1,0 +1,99 @@
+
+	<div class="container">
+    <h1 class="home">
+      <%= link_to "Link Categories", root_path %>
+        
+    </h1>
+    <h2><% if params[:linkcat_id].present? %><% @linkcatnames.each do |linkcatname| %><%= linkcatname.linkcatname %><% end %><% else %><% end %></h2></div>
+
+<div class="search">
+      <% if current_user? %>
+        <% if params[:linkcat_id].present? %>
+         <h4><%= simple_form_for :search, url: root_path, method: :get do |f| %></h4>
+          <h4><%= f.input :q, placeholder: "search", label: '' %></h4>
+          <% end %>
+          <% else %>
+
+          <% end %>
+      <% else %>  
+        <h4>No Search available, please sign in</h4>
+       
+        
+        
+      <% end %> 
+      
+      <% if current_user? %>
+        <h4>User: <%= current_user.username %></h4>
+        
+        <h4><%= link_to "Log out", session_path, method: :delete %></h4>
+        <h4><%= link_to "My links", users_wlinks_path %></h4>
+        <% if params[:linkcat_id].present? %>
+        
+        <h4><%= link_to "Add a link", new_linkcat_wlink_path %><h4>
+        <% end %>
+        
+     
+      <% else %>
+        <h4><%= link_to "Sign up", new_users_path %></h4>
+        <h4><%= link_to "Log in", new_session_path %></h4>
+      <% end %>
+    </div>
+
+
+<% @wlinks.each do |wlink| %>
+	<% if params[:linkcat_id].present? %>
+	<div class="wlink">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack" id="rj2vLa9nhNpH"><tr><td class=" col1 colbackground1 col_width1" style=""><div class=" full levelcolor1"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" id="rtj2vLa9nhNpH" class=" col_width1 col1"><tr>
+<td class=" subcell wholedocgutter level1 levelguttercolor1" style="width: 0px;"></td>
+<td class=" subcell wholedocgutter indicator level1 levelguttercolor1" style="width: 13px;"><div onmousedown="ioSwitch('pj2vLa9nhNpH', event.shiftKey)" id="ij2vLa9nhNpH" style="margin: 2px 3px 0 3px;" border="0" alt="&gt;" class="expand-image-light-theme" title="expand"></div></td>
+<td class=" subcell wholedocgutter labelpadding level1 levelguttercolor1" style=" width: 1px; "></td>
+<td class=" content level1 subcell">
+<span class="" style="background-color:rgba(0,0,0,0) ;  "><%= link_to wlink.wlinkname, wlink.urlwlink %><div class="vote" ><ul>
+			<li>
+				<%= link_to "Upvote", wlink_votes_path(wlink), method: :post %>	
+			</li>
+			<li>
+				<%= pluralize(wlink.votes.size, 'upvote') %>
+			</li>	
+			
+			<li>
+				<%= time_ago_in_words wlink.created_at %> ago.
+			</li>	
+		</ul></div></span><br>
+</td>
+</tr></table></div></td></tr></table>
+<div id="pj2vLa9nhNpH" class="collapsed">
+<table cellspacing="0" border="0" cellpadding="0" class="row heighthack" id="rebthCIUR1Uy"><tr><td class=" col1 colbackground1 col_width1" style="border-bottom: none;"><div class=" full levelcolor2"><table border="0" cellspacing="0" cellpadding="0" style="height:100%" id="rtebthCIUR1Uy" class=" col_width1 col1">
+<tr>
+<td class=" subcell wholedocgutter level2 levelguttercolor2" style="width: 16px;"></td>
+<td class=" subcell wholedocgutter indicator level2 levelguttercolor2" style="width: 13px;"><div onmousedown="ioSwitch('pebthCIUR1Uy', event.shiftKey)" id="iebthCIUR1Uy" style="margin: 2px 3px 0 3px;" border="0" alt="&gt;" class="expand-image-light-theme" title="expand"></div></td>
+<td class=" subcell wholedocgutter labelpadding level2 levelguttercolor2" style=" width: 1px; "></td>
+<td class=" content level2 subcell">
+<span class="" style="background-color:rgba(0,0,0,0) ;  "><%= wlink.descwlink %></span><br>
+</td>
+</tr>
+<tr>
+<td class="note-bg"></td>
+<td class="note-bg"></td>
+<td class="note-bg"></td>
+<td class="note subcell">
+<span class="" style="background-color:rgba(0,0,0,0) ;  "><%= link_to pluralize(wlink.comments.size,'comment'), linkcat_wlink_path(params[:linkcat_id], wlink.id) %></span><br>
+</td>
+</tr>
+		
+		
+		
+		
+		
+
+	</div>
+	<% else %>
+<h2><%= link_to wlink.wlinkname, wlink.urlwlink %></h2>
+		
+		<p><%= wlink.descwlink %></p>
+
+
+	
+<% end %>
+<% end %>
+	
